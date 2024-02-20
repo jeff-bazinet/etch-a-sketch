@@ -12,13 +12,22 @@
 
 .input-form {
   display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 15px;
 }
 
-.input-form label {
-  padding: 0 20px;
+.inputs{
+  margin-bottom: 10px;
+}
+
+.inputs label {
+  padding-left: 20px;
+}
+
+.button{
+  border: 2px solid greenyellow;
 }
 
 .square-grid {
