@@ -1,6 +1,7 @@
-const grid = [];
+let grid = [];
 let squaresRow = 0;
 let squaresColumn = 0;
+let maxSizeOfSquare = 0;
 let inputRows = document.querySelector('#rows-input');
 let inputColumns = document.querySelector('#columns-input');
 
@@ -8,6 +9,8 @@ inputRows.addEventListener('change', (e) => {
   squaresRow = parseInt(e.target.value);
 
   if (typeof squaresColumn === 'number' && squaresColumn > 0) {
+    clearCurrentGrid();
+    calculateMaxRowsColumns();
     createGridArray(squaresRow, squaresColumn);
   }
 });
@@ -15,16 +18,25 @@ inputRows.addEventListener('change', (e) => {
 inputColumns.addEventListener('change', (e) => {
   squaresColumn = parseInt(e.target.value);
   if (typeof squaresRow === 'number' && squaresRow > 0) {
+    clearCurrentGrid();
+    calculateMaxRowsColumns();
     createGridArray(squaresRow, squaresColumn);
   }
 });
 
+function clearCurrentGrid() {
+  // grid = [];
+  console.log(grid);
+  let squareGridContainer = document.querySelector('.square-grid');
+
+  squareGridContainer.replaceChildren();
+}
 
 function calculateMaxRowsColumns() {
   // Determine if we have more rows or columns. If we have more rows, use that to determine the max # of rows based on the container
-  let useRows = numOfSquaresRow >= numOfSquaresColumn ? true : false;
+  let squareSize = squaresRow >= squaresColumn ? squaresRow : squaresColumn;
   // The size of a square is the container size / the # of rows or columns. 2 pixels taken off for border.
-  const maxSizeOfSquare = 960 / numOfSquaresColumn - 2;
+  maxSizeOfSquare = 960 / squareSize - 2;
   // The max # of rows is 960 /
 }
 
@@ -47,13 +59,6 @@ function renderSquare(gridItem) {
   squareDiv.setAttribute('id', gridItem);
   squareDiv.style.height = `${maxSizeOfSquare}px`;
   squareDiv.style.flex = `0 0 ${maxSizeOfSquare}px`;
-  // squareDiv.textContent = gridItem;
+  squareDiv.textContent = gridItem;
   squareGridContainer.append(squareDiv);
 }
-
-// promptUserRow();
-// promptUserColumn();
-
-// createGridArray(numOfSquaresRow, numOfSquaresColumn);
-// renderGrid();
-// while()
