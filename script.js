@@ -1,18 +1,32 @@
 const grid = [];
+let squaresRow = 0;
+let squaresColumn = 0;
+let inputRows = document.querySelector('#rows-input');
+let inputColumns = document.querySelector('#columns-input');
 
-function promptUserRow(){
-  return prompt("How many rows?");
+inputRows.addEventListener('change', (e) => {
+  squaresRow = parseInt(e.target.value);
+
+  if (typeof squaresColumn === 'number' && squaresColumn > 0) {
+    createGridArray(squaresRow, squaresColumn);
+  }
+});
+
+inputColumns.addEventListener('change', (e) => {
+  squaresColumn = parseInt(e.target.value);
+  if (typeof squaresRow === 'number' && squaresRow > 0) {
+    createGridArray(squaresRow, squaresColumn);
+  }
+});
+
+
+function calculateMaxRowsColumns() {
+  // Determine if we have more rows or columns. If we have more rows, use that to determine the max # of rows based on the container
+  let useRows = numOfSquaresRow >= numOfSquaresColumn ? true : false;
+  // The size of a square is the container size / the # of rows or columns. 2 pixels taken off for border.
+  const maxSizeOfSquare = 960 / numOfSquaresColumn - 2;
+  // The max # of rows is 960 /
 }
-
-function promptUserColumn(){
-  return prompt("How many columns?")
-}
-
-// Determine if we have more rows or columns. If we have more rows, use that to determine the max # of rows based on the container
-let useRows = numOfSquaresRow >= numOfSquaresColumn ? true : false;
-// The size of a square is the container size / the # of rows or columns. 2 pixels taken off for border.
-const maxSizeOfSquare = (960 / numOfSquaresColumn) - 2;
-// The max # of rows is 960 / 
 
 function createGridArray(squaresRow, squaresColumn) {
   for (let i = 0; i < squaresRow; i++) {
@@ -33,11 +47,13 @@ function renderSquare(gridItem) {
   squareDiv.setAttribute('id', gridItem);
   squareDiv.style.height = `${maxSizeOfSquare}px`;
   squareDiv.style.flex = `0 0 ${maxSizeOfSquare}px`;
-    // squareDiv.textContent = gridItem;
+  // squareDiv.textContent = gridItem;
   squareGridContainer.append(squareDiv);
 }
 
-promptUserRow();
-promptUserColumn();
-createGridArray(numOfSquaresRow, numOfSquaresColumn);
+// promptUserRow();
+// promptUserColumn();
+
+// createGridArray(numOfSquaresRow, numOfSquaresColumn);
 // renderGrid();
+// while()
