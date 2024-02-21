@@ -15,7 +15,7 @@ inputButton.addEventListener('click', (e) => {
     squaresColumn > 0
   ) {
     clearCurrentGrid();
-    calculateMaxRowsColumns();
+    calculateMaxRowsColumns(squaresColumn);
     createGridArray(squaresRow, squaresColumn);
   }
 });
@@ -25,9 +25,8 @@ function clearCurrentGrid() {
   squareGridContainer.replaceChildren();
 }
 
-function calculateMaxRowsColumns() {
-  let squareSize = squaresRow >= squaresColumn ? squaresRow : squaresColumn;
-  maxSizeOfSquare = 960 / squareSize;
+function calculateMaxRowsColumns(squaresColumn) {
+  maxSizeOfSquare = 800 / squaresColumn;
 }
 
 function createGridArray(squaresRow, squaresColumn) {
@@ -49,6 +48,9 @@ function renderSquare(gridItem) {
   squareDiv.setAttribute('id', gridItem);
   squareDiv.style.height = `${maxSizeOfSquare}px`;
   squareDiv.style.flex = `0 0 ${maxSizeOfSquare}px`;
-  squareDiv.textContent = gridItem;
+  squareDiv.textContent = '';
   squareGridContainer.append(squareDiv);
 }
+
+calculateMaxRowsColumns(4)
+createGridArray(4, 4);

@@ -2,46 +2,59 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+body{
+  background-color: #ececec;
 }
 
 .container {
-  background-color: blue;
+  background-color: #385170;
   display: flex;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 30px;
 }
 
 .input-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  margin: 15px;
+  padding: 15px;
+  color: #142d4c;
+  font-weight: 400;
+  font-size: 20px;
 }
 
 .inputs{
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .inputs label {
-  padding-left: 20px;
+  padding: 0 20px;
+
 }
 
-.button{
-  
+#create-grid-btn {
+  border: 1px solid #142d4c;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .square-grid {
-  width: 960px;
-  background-color: red;
+  width: 800px;
+  background-color: #142d4c;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .square {
   text-align: center;
   flex: 1;
-  padding: 10px;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255, 20%);
 }
