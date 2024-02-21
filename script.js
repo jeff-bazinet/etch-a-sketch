@@ -46,8 +46,8 @@ function renderSquare(gridItem) {
   let squareDiv = document.createElement('div');
   squareDiv.classList.add('square');
   squareDiv.setAttribute('id', gridItem);
-  squareDiv.style.height = `${maxSizeOfSquare}px`;
-  squareDiv.style.flex = `0 0 ${maxSizeOfSquare}px`;
+  // squareDiv.style.height = `${maxSizeOfSquare}px`;
+  squareDiv.style.flex = `1 1 ${maxSizeOfSquare}px`;
   squareDiv.textContent = '';
   squareGridContainer.append(squareDiv);
 

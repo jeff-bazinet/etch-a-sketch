@@ -13,7 +13,7 @@ body{
   background-color: #385170;
   display: flex;
   justify-content: center;
-  padding-top: 30px;
+  /* padding-top: 30px; */
 }
 
 .input-form {
@@ -46,19 +46,14 @@ body{
 
 .square-grid {
   width: 800px;
+  height: 800px;
   background-color: #142d4c;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 30px;
 }
 
 .square {
   text-align: center;
-  flex: 1;
+  flex: 1 1 auto;
   border: 1px solid rgb(255, 255, 255, 20%);
 }
-
-/* .square-hover {
-  background-color: #9fd3c7;
-} */
