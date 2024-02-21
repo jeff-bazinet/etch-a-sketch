@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -27,7 +28,7 @@
 }
 
 .button{
-  border: 2px solid greenyellow;
+  
 }
 
 .square-grid {
@@ -40,6 +41,7 @@
 
 .square {
   text-align: center;
+  flex: 1;
   padding: 10px;
   border: 1px solid black;
 }

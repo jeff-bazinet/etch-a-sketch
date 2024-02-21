@@ -2,22 +2,18 @@ let grid = [];
 let squaresRow = 0;
 let squaresColumn = 0;
 let maxSizeOfSquare = 0;
-let inputRows = document.querySelector('#rows-input');
-let inputColumns = document.querySelector('#columns-input');
+let inputButton = document.querySelector('#create-grid-btn');
 
-inputRows.addEventListener('change', (e) => {
-  squaresRow = parseInt(e.target.value);
+inputButton.addEventListener('click', (e) => {
+  squaresRow = parseInt(document.querySelector('#rows-input').value);
+  squaresColumn = parseInt(document.querySelector('#columns-input').value);
 
-  if (typeof squaresColumn === 'number' && squaresColumn > 0) {
-    clearCurrentGrid();
-    calculateMaxRowsColumns();
-    createGridArray(squaresRow, squaresColumn);
-  }
-});
-
-inputColumns.addEventListener('change', (e) => {
-  squaresColumn = parseInt(e.target.value);
-  if (typeof squaresRow === 'number' && squaresRow > 0) {
+  if (
+    typeof squaresRow === 'number' &&
+    squaresRow > 0 &&
+    typeof squaresColumn === 'number' &&
+    squaresColumn > 0
+  ) {
     clearCurrentGrid();
     calculateMaxRowsColumns();
     createGridArray(squaresRow, squaresColumn);
@@ -25,19 +21,13 @@ inputColumns.addEventListener('change', (e) => {
 });
 
 function clearCurrentGrid() {
-  // grid = [];
-  console.log(grid);
   let squareGridContainer = document.querySelector('.square-grid');
-
   squareGridContainer.replaceChildren();
 }
 
 function calculateMaxRowsColumns() {
-  // Determine if we have more rows or columns. If we have more rows, use that to determine the max # of rows based on the container
   let squareSize = squaresRow >= squaresColumn ? squaresRow : squaresColumn;
-  // The size of a square is the container size / the # of rows or columns. 2 pixels taken off for border.
-  maxSizeOfSquare = 960 / squareSize - 2;
-  // The max # of rows is 960 /
+  maxSizeOfSquare = 960 / squareSize;
 }
 
 function createGridArray(squaresRow, squaresColumn) {
