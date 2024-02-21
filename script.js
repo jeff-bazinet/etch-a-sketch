@@ -3,36 +3,19 @@ let squaresRow = 0;
 let squaresColumn = 0;
 let maxSizeOfSquare = 0;
 let inputButton = document.querySelector('#create-grid-btn');
-
-inputButton.addEventListener('click', (e) => {
-  squaresRow = parseInt(document.querySelector('#rows-input').value);
-  squaresColumn = parseInt(document.querySelector('#columns-input').value);
-
-  if (
-    typeof squaresRow === 'number' &&
-    squaresRow > 0 &&
-    typeof squaresColumn === 'number' &&
-    squaresColumn > 0
-  ) {
-    clearCurrentGrid();
-    calculateMaxRowsColumns(squaresColumn);
-    createGridArray(squaresRow, squaresColumn);
-  }
-});
+let rowsInput = document.querySelector('#rows-input');
 
 function clearCurrentGrid() {
   let squareGridContainer = document.querySelector('.square-grid');
   squareGridContainer.replaceChildren();
 }
 
-function calculateMaxRowsColumns(squaresColumn) {
+function calculateMaxSizeOfSquare(squaresColumn) {
   maxSizeOfSquare = 800 / squaresColumn;
 }
 
 function createGridArray(squaresRow, squaresColumn) {
   for (let i = 0; i < squaresRow; i++) {
-    console.log(`adding new row ${i}`);
-    console.log(grid);
     grid[i] = [];
     for (let j = 0; j < squaresColumn; j++) {
       grid[i][j] = `${i},${j}`;
@@ -42,17 +25,17 @@ function createGridArray(squaresRow, squaresColumn) {
 }
 
 function renderSquare(gridItem) {
-  let squareGridContainer = document.querySelector('.square-grid');
-  let squareDiv = document.createElement('div');
+  const squareGridContainer = document.querySelector('.square-grid');
+  const squareDiv = document.createElement('div');
   squareDiv.classList.add('square');
   squareDiv.setAttribute('id', gridItem);
-  // squareDiv.style.height = `${maxSizeOfSquare}px`;
   squareDiv.style.flex = `1 1 ${maxSizeOfSquare}px`;
   squareDiv.textContent = '';
   squareGridContainer.append(squareDiv);
 
   squareDiv.addEventListener('mouseenter', (e) => {
     squareDiv.style.backgroundColor = randomizeSquareColorHex();
+    setBrightness(squareDiv);
   });
 }
 
@@ -66,7 +49,38 @@ function randomizeSquareColorHex() {
   return color;
 }
 
-let rowsInput = document.querySelector('#rows-input');
+function setBrightness(squareDiv) {
+  let currentBrightness = squareDiv.dataset.brightness || 100;
+  currentBrightness = parseInt(currentBrightness) - 20;
+
+  if (currentBrightness >= 0) {
+    squareDiv.style.filter = `brightness(${currentBrightness}%)`;
+    squareDiv.dataset.brightness = currentBrightness;
+  }
+}
+
+inputButton.addEventListener('click', (e) => {
+  squaresRow = parseInt(document.querySelector('#rows-input').value);
+  squaresColumn = parseInt(document.querySelector('#columns-input').value);
+
+  if (squaresRow > 100 || squaresColumn > 100) {
+    alert('Please Enter Values Less Than 100');
+    return;
+  }
+
+  if (
+    typeof squaresRow === 'number' &&
+    squaresRow > 0 &&
+    typeof squaresColumn === 'number' &&
+    squaresColumn > 0
+  ) {
+    clearCurrentGrid();
+    calculateMaxSizeOfSquare(squaresColumn);
+    createGridArray(squaresRow, squaresColumn);
+  }
+});
+
 rowsInput.focus();
-calculateMaxRowsColumns(4);
+
+calculateMaxSizeOfSquare(4);
 createGridArray(4, 4);

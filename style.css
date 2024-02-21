@@ -5,15 +5,14 @@
   font-family: Roboto, sans-serif;
 }
 
-body{
+body {
   background-color: #ececec;
 }
 
 .container {
-  background-color: #385170;
+  background-color: #ececec;
   display: flex;
   justify-content: center;
-  /* padding-top: 30px; */
 }
 
 .input-form {
@@ -26,7 +25,7 @@ body{
   font-size: 20px;
 }
 
-.inputs{
+.inputs {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -34,7 +33,6 @@ body{
 
 .inputs label {
   padding: 0 20px;
-
 }
 
 #create-grid-btn {
@@ -47,13 +45,12 @@ body{
 .square-grid {
   width: 800px;
   height: 800px;
-  background-color: #142d4c;
+  background-color: #9fa3a8;
+  /* border: 1px solid red; */
   display: flex;
   flex-wrap: wrap;
 }
 
 .square {
-  text-align: center;
-  flex: 1 1 auto;
   border: 1px solid rgb(255, 255, 255, 20%);
 }
