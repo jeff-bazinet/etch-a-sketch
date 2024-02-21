@@ -50,7 +50,23 @@ function renderSquare(gridItem) {
   squareDiv.style.flex = `0 0 ${maxSizeOfSquare}px`;
   squareDiv.textContent = '';
   squareGridContainer.append(squareDiv);
+
+  squareDiv.addEventListener('mouseenter', (e) => {
+    squareDiv.style.backgroundColor = randomizeSquareColorHex();
+  });
 }
 
-calculateMaxRowsColumns(4)
+function randomizeSquareColorHex() {
+  let letters = '0123456789ABCDEF';
+  let color = '#';
+
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+let rowsInput = document.querySelector('#rows-input');
+rowsInput.focus();
+calculateMaxRowsColumns(4);
 createGridArray(4, 4);
